@@ -17,19 +17,21 @@ public class Order implements Iterable<Food> {
     //EFFECT: add given food to curentOrder and update AmountOrdered
     public void order(int amount, Food food) {
         currentFoodOrdered.add(food);
-        food.AddOrderAmount(amount);
+        food.addOrderAmount(amount);
     }
 
 
     //EFFECT: print out all items that the customer have ordered so far
     public void printCurrentOrder() {
-        for (Food f : currentFoodOrdered)
+        for (Food f : currentFoodOrdered) {
             System.out.println(f.getAmountOrdered() + " " + f.getName());
+        }
+
     }
 
 
     //EFFECT: return amount of items that the customer have ordered so far
-    public int getSize(){
+    public int getSize() {
         return currentFoodOrdered.size();
     }
 

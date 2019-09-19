@@ -1,4 +1,4 @@
-package menu.burger.Chicken;
+package menu.burger.chicken;
 
 import menu.burger.Burger;
 

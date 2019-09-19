@@ -1,10 +1,10 @@
-package menu.menuDisplayed;
+package menudisplayed;
 
 import menu.Food;
 
 import java.util.List;
 
-public class Menu {
+public abstract class Menu {
     List<Food> menu;
 
 
@@ -15,7 +15,7 @@ public class Menu {
     //EFFECTS: add food to menu
     public void addFood(Food food) {
         menu.add(food);
-        }
+    }
 
 
     //EFFECTS: prints out all food on the menu
@@ -34,11 +34,13 @@ public class Menu {
         }
         return null;
 
-        //Todo : add an exception to handle foodNotFound
     }
 
     //EFFECT: return amount of items in the menu
     public int getSize() {
         return menu.size();
     }
+
+    //EFFECT: set up the menu
+    public abstract void setup();
 }

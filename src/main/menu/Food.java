@@ -7,7 +7,7 @@ public abstract class Food {
     protected String type;
 
     //EFFECT: Add the amount of customer order
-    public void AddOrderAmount(int order){
+    public void addOrderAmount(int order) {
         amountOrdered += order;
     }
 
@@ -19,12 +19,12 @@ public abstract class Food {
     }
 
     //EFFECT: Return price of food
-    public  int getPrice(){
+    public int getPrice() {
         return price;
     }
 
     //EFFECT: Set the price of the food
-    public void setPrice(int newPrice){
+    public void setPrice(int newPrice) {
         price = newPrice;
     }
 
@@ -33,7 +33,7 @@ public abstract class Food {
     }
 
     //EFFECT: return food type
-    public String getType(){
+    public String getType() {
         return type;
     }
 
