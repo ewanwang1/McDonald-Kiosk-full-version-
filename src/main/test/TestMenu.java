@@ -6,18 +6,18 @@ import menu.sides.Cookie;
 import menu.sides.Sides;
 import menudisplayed.BurgurMenu;
 import menudisplayed.Menu;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class TestMenu {
     Menu testMenu;
     Drink coke;
     Sides cookie;
 
-    @Before
+    @BeforeEach
     public void setup() {
         testMenu = new BurgurMenu();
         coke = new Coke();
