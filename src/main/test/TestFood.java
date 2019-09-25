@@ -2,15 +2,15 @@ package test;
 
 import menu.Food;
 import menu.burger.beef.BigMac;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestFood {
     Food bigMac;
 
-    @Before
+    @BeforeEach
     public void setup() {
         bigMac = new BigMac();
         bigMac.addOrderAmount(3);

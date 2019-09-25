@@ -67,12 +67,12 @@ public class KioskManager {
 
     //EFFECT: print out all types of food Mcdonald has
     private void printTypes() {
-        //       System.out.println("1. Burgers");
-        //       System.out.println("2. Sides");
+        System.out.println("1. Burgers");
+        System.out.println("2. Sides");
         System.out.println("3. Drinks");
         System.out.println("4. View current order");
-        //      System.out.println("5. Check Out");
-        //       System.out.println("6. Quit");
+        System.out.println("5. Check Out");
+        System.out.println("6. Quit");
     }
 
     private void handleTypes(int typeChoice) {
