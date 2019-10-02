@@ -1,7 +1,7 @@
 package test;
 
-import menu.Food;
-import menu.burger.beef.BigMac;
+import main.menu.Food;
+import main.menu.burger.beef.BigMac;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

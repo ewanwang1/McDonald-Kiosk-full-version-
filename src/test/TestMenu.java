@@ -1,11 +1,11 @@
 package test;
 
-import menu.drink.Coke;
-import menu.drink.Drink;
-import menu.sides.Cookie;
-import menu.sides.Sides;
-import menudisplayed.BurgurMenu;
-import menudisplayed.Menu;
+import main.menu.drink.Coke;
+import main.menu.drink.Drink;
+import main.menu.sides.Cookie;
+import main.menu.sides.Sides;
+import main.menudisplayed.BurgurMenu;
+import main.menudisplayed.Menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

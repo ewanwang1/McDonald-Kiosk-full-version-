@@ -1,13 +1,11 @@
-import com.sun.org.apache.xpath.internal.operations.Or;
-import menu.Food;
-import menu.drink.Coke;
+import main.menu.Food;
+import main.menu.drink.Coke;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.Order;
+import main.ui.Order;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,11 +18,10 @@ public class testLoadSave {
     @BeforeEach
     public void setUp() throws IOException {
         order = new Order();
+
         coke = new Coke();
         order.order(1, coke);
         order.save();
-
-
     }
 
     @Test
@@ -33,7 +30,7 @@ public class testLoadSave {
         order.load();
         Food f = order.getCurrentFoodOrdered().get(0);
         assertEquals(f.getName(), "Coke");
-
+        order.save();
     }
 
 }
