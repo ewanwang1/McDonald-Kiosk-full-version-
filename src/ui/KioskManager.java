@@ -6,9 +6,11 @@ import menudisplayed.DrinkMenu;
 import menudisplayed.Menu;
 import menudisplayed.SidesMenu;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class KioskManager {
+public class KioskManager implements Serializable {
     private Scanner userInput;
     private Order currentOrder;
     private Menu menu;
@@ -25,21 +27,24 @@ public class KioskManager {
         orderComplete = false;
     }
 
-    public void startOrder() {
+    public void startKiosk() throws IOException, ClassNotFoundException {
         greet();
+        currentOrder.load();
         while (!orderComplete) {
-            displayMainMenu();
+            displayInitialChoice();
             int typeChoice = userInput.nextInt();
             System.out.println();
-            handleTypes(typeChoice);
+            handleInitialChoice(typeChoice);
+
         }
+        currentOrder.save();
         System.out.println("Thank you for visiting McDonald. Have a great day!!");
         userInput.close();
 
     }
 
     private void greet() {
-        System.out.println("Welcome to Mcdonald. Please make your order "
+        System.out.println("Welcome to Mcdonald. Please make your choice "
                 + "by pressing the number that corresponds to your choice");
     }
 
@@ -58,41 +63,69 @@ public class KioskManager {
     }
 
 
-    //EFFECT: display the first round of options for the customer
+    private void displayInitialChoice() {
+        System.out.println("What would you like to do? ");
+        printInitialChoice();
+    }
+
+    //EFFECT: display main Menu
     private void displayMainMenu() {
         System.out.println("Our option today is: ");
-        printTypes();
+        System.out.println();
+        System.out.println("1. Burger");
+        System.out.println("2. Sides");
+        System.out.println("3. Check out");
+        System.out.println("4. Quit");
     }
 
 
     //EFFECT: print out all types of food Mcdonald has
-    private void printTypes() {
-        System.out.println("1. Burgers");
-        System.out.println("2. Sides");
-        System.out.println("3. Drinks");
-        System.out.println("4. View current order");
-        System.out.println("5. Check Out");
-        System.out.println("6. Quit");
+    private void printInitialChoice() {
+        System.out.println("1. Order");
+        System.out.println("2. View current order");
+        System.out.println("3. Clear Order");
+        System.out.println("4. Check out");
+        System.out.println("5. Quit");
     }
 
-    private void handleTypes(int typeChoice) {
+
+    private void handleInitialChoice(int typeChoice) {
         switch (typeChoice) {
             case 1:
-                handleBurgerMenu();
+                startOrder();
                 break;
+            case 2:
+                viewOrder();
+                break;
+            case 3:
+                currentOrder.clearOrder();
+                break;
+            case 4:
+                checkOut();
+                break;
+            case 5:
+                quit();
+                break;
+            default:
+        }
+    }
+
+    private void startOrder() {
+        displayMainMenu();
+        int userChoiceOfType = userInput.nextInt();
+        switch (userChoiceOfType) {
+            case 1:
+                handleBurgerMenu();
+                return;
             case 2:
                 handleSideMenu();
                 break;
             case 3:
                 handleDrinkMenu();
                 break;
-            case 4:
-                viewOrder();
-                break;
-            case 5:
-                checkOut();
-                break;
+
             default:
+                throw new IllegalStateException("Unexpected value: " + userChoiceOfType);
         }
     }
 
@@ -137,6 +170,7 @@ public class KioskManager {
     //Check out the items that the customer have ordered
     private void checkOut() {
         System.out.println("The total for your order is $" + totalCostCalc());
+        currentOrder.clearOrder();
         orderComplete = true;
     }
 

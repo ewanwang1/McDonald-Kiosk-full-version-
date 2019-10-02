@@ -4,12 +4,17 @@ import menu.burger.beef.BigMac;
 import menu.drink.Coke;
 import menudisplayed.Menu;
 
-public class MacDonaldKiosk {
-    public static void main(String[] args) {
+import java.io.IOException;
+import java.io.Serializable;
+
+public class MacDonaldKiosk implements Serializable {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         KioskManager kioskManager = new KioskManager();
         kioskManager.setUpMenu();
-        kioskManager.startOrder();
+
+        kioskManager.startKiosk();
+
     }
 
 

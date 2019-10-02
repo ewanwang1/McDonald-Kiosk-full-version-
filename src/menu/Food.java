@@ -1,6 +1,8 @@
 package menu;
 
-public abstract class Food {
+import java.io.Serializable;
+
+public abstract class Food implements Serializable {
     protected int price;
     protected String name;
     protected int amountOrdered;
