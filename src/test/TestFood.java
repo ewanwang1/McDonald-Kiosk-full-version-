@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestFood {
     Food bigMac;
@@ -23,8 +24,11 @@ public class TestFood {
 
     @Test
     public void testGetAmountOrdered() {
+        assertEquals(bigMac.getAmountOrdered(), 0);
         bigMac.addOrderAmount(3);
         assertEquals(bigMac.getAmountOrdered(), 3);
+        bigMac.addOrderAmount(5);
+        assertEquals(bigMac.getAmountOrdered(),8);
     }
 
     @Test
@@ -36,7 +40,7 @@ public class TestFood {
     }
 
     @Test
-    public void testAllFood(){
+    public void testAllFood() {
 
     }
 }
