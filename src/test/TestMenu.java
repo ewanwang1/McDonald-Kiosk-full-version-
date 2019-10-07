@@ -5,7 +5,9 @@ import main.menu.drink.Drink;
 import main.menu.sides.Cookie;
 import main.menu.sides.Sides;
 import main.menudisplayed.BurgurMenu;
+import main.menudisplayed.DrinkMenu;
 import main.menudisplayed.Menu;
+import main.menudisplayed.SidesMenu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,27 +15,42 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestMenu {
-    Menu testMenu;
+    Menu testBurgerMenu;
+    Menu testSidesMenu;
+    Menu testDrinkMenu;
     Drink coke;
     Sides cookie;
 
     @BeforeEach
     public void setup() {
-        testMenu = new BurgurMenu();
+        testBurgerMenu = new BurgurMenu();
+        testSidesMenu = new SidesMenu();
+        testDrinkMenu = new DrinkMenu();
         coke = new Coke();
         cookie = new Cookie();
-        testMenu.addFood(coke);
-        testMenu.addFood(cookie);
+        testBurgerMenu.addFood(coke);
+        testBurgerMenu.addFood(cookie);
     }
 
     @Test
     public void testAddFood() {
-        assertEquals(testMenu.getSize(), 3);
+        assertEquals(testBurgerMenu.getSize(), 3);
     }
 
     @Test
     public void testGetFood() {
-        assertEquals(testMenu.getFood(1), coke);
+
+        assertEquals(testBurgerMenu.getFood(1), coke);
+        assertEquals(testBurgerMenu.getFood(13), null);
     }
+
+    @Test
+    public void testSetUp(){
+        testBurgerMenu.setup();
+        testDrinkMenu.setup();
+        testSidesMenu.setup();
+    }
+
+
 
 }

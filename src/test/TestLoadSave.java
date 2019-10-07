@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class testLoadSave {
+public class TestLoadSave {
     Food coke;
     ArrayList<Food> foodOrdered;
     Order order;

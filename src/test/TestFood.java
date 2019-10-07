@@ -13,18 +13,24 @@ public class TestFood {
     @BeforeEach
     public void setup() {
         bigMac = new BigMac();
-        bigMac.addOrderAmount(3);
-        bigMac.setPrice(21);
     }
 
     @Test
     public void testAddOrderAmount() {
+        bigMac.addOrderAmount(3);
         assertEquals(bigMac.getAmountOrdered(), 3);
     }
 
     @Test
     public void testSetPrice() {
+        bigMac.addOrderAmount(3);
+        bigMac.setPrice(21);
         assertEquals(bigMac.getPrice(), 21);
+        assertEquals(bigMac.getName(), "BigMac");
     }
 
+    @Test
+    public void testAllFood(){
+
+    }
 }

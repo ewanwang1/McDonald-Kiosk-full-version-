@@ -34,10 +34,5 @@ public abstract class Food implements Serializable {
         return name;
     }
 
-    //EFFECT: return food type
-    public String getType() {
-        return type;
-    }
-
 
 }
