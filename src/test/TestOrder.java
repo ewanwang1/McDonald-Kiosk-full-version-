@@ -35,9 +35,10 @@ public class TestOrder {
         assertEquals(testOrder.iterator().next(), bigMac);
         assertEquals(testOrder.iterator().next().getAmountOrdered(), 1);
         assertEquals(testOrder.getCurrentFoodOrdered(), currentFoodOrdered);
-
+        testOrder.printCurrentOrder();
         testOrder.clearOrder();
         assertTrue(testOrder.isOrderEmpty());
+
     }
 
 

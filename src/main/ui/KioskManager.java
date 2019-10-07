@@ -19,7 +19,7 @@ public class KioskManager implements Serializable {
     private DrinkMenu drinkMenu;
     private SidesMenu sidesMenu;
     private Boolean orderComplete;
-    private int menuSize;
+
 
 
     public KioskManager() {

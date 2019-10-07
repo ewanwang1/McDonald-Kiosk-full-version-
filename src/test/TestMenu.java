@@ -34,12 +34,13 @@ public class TestMenu {
 
     @Test
     public void testAddFood() {
+        testSidesMenu.getSize();
         assertEquals(testBurgerMenu.getSize(), 3);
+        testSidesMenu.printMenu();
     }
 
     @Test
     public void testGetFood() {
-
         assertEquals(testBurgerMenu.getFood(1), coke);
         assertEquals(testBurgerMenu.getFood(13), null);
     }
@@ -49,11 +50,12 @@ public class TestMenu {
         testBurgerMenu.setup();
         testDrinkMenu.setup();
         testSidesMenu.setup();
+
     }
 
     @Test
     public void testPrint(){
-        testSidesMenu.printMenu();
+
     }
 
 

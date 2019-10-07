@@ -34,9 +34,6 @@ public class TestLoadSave {
         order.save();
     }
 
-    @Test
-    public void testLoadable(Loadable loadable) throws IOException, ClassNotFoundException {
-        loadable.load();
-    }
+
 
 }
