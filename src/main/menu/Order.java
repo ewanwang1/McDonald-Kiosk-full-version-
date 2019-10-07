@@ -1,4 +1,4 @@
-package main.ui;
+package main.menu;
 
 
 import main.exception.Loadable;
@@ -8,14 +8,15 @@ import main.menu.Food;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 
 public class Order implements Iterable<Food>, Serializable, Loadable, Savable {
-    private ArrayList<Food> currentFoodOrdered;
+    private LinkedList<Food> currentFoodOrdered;
     private Food food;
 
     public Order() {
-        currentFoodOrdered = new ArrayList<>();
+        currentFoodOrdered = new LinkedList<>();
     }
 
 
@@ -40,7 +41,7 @@ public class Order implements Iterable<Food>, Serializable, Loadable, Savable {
         return currentFoodOrdered.size();
     }
 
-    public ArrayList<Food> getCurrentFoodOrdered() {
+    public LinkedList<Food> getCurrentFoodOrdered() {
         return currentFoodOrdered;
     }
 
@@ -57,6 +58,10 @@ public class Order implements Iterable<Food>, Serializable, Loadable, Savable {
         System.out.println("Order has been cleared");
     }
 
+    public boolean isOrderEmpty() {
+        return currentFoodOrdered.isEmpty();
+    }
+
     public void save() throws IOException {
         FileOutputStream fos = new FileOutputStream("C:\\data\\UBC\\2nd year\\Cpsc 210\\Personal project\\t.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -68,16 +73,14 @@ public class Order implements Iterable<Food>, Serializable, Loadable, Savable {
         FileInputStream fis = new FileInputStream("C:\\data\\UBC\\2nd year\\Cpsc 210\\Personal project\\t.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
         // food = (Food) ois.readObject();
-        currentFoodOrdered = (ArrayList<Food>) ois.readObject();
+        currentFoodOrdered = (LinkedList<Food>) ois.readObject();
         ois.close();
     }
 
     // taken from https://stackoverflow.com/questions/16111496/
     // java-how-can-i-write-my-arraylist-to-a-file-and-read-load-that-file-to-the
 
-    public void testLoadable(Loadable loadable) throws IOException, ClassNotFoundException {
-        loadable.load();
-    }
+
 
 
 }
