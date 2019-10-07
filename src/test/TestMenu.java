@@ -51,6 +51,11 @@ public class TestMenu {
         testSidesMenu.setup();
     }
 
+    @Test
+    public void testPrint(){
+        testSidesMenu.printMenu();
+    }
+
 
 
 }

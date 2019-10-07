@@ -22,6 +22,12 @@ public class TestFood {
     }
 
     @Test
+    public void testGetAmountOrdered() {
+        bigMac.addOrderAmount(3);
+        assertEquals(bigMac.getAmountOrdered(), 3);
+    }
+
+    @Test
     public void testSetPrice() {
         bigMac.addOrderAmount(3);
         bigMac.setPrice(21);

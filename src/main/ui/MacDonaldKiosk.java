@@ -8,7 +8,6 @@ public class MacDonaldKiosk implements Serializable {
 
         KioskManager kioskManager = new KioskManager();
         kioskManager.setUpMenu();
-
         kioskManager.startKiosk();
 
     }

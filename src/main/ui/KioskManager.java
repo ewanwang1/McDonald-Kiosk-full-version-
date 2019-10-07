@@ -30,7 +30,9 @@ public class KioskManager implements Serializable {
     public void startKiosk() throws IOException, ClassNotFoundException {
         greet();
         while (!orderComplete) {
-            currentOrder.load();
+            if (currentOrder.getSize() > 0) {
+                currentOrder.load();
+            }
             displayInitialChoice();
             int typeChoice = userInput.nextInt();
             System.out.println();
