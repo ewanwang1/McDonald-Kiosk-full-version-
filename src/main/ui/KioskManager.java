@@ -1,11 +1,11 @@
 package main.ui;
 
-import main.menu.Food;
-import main.menu.Order;
-import main.menudisplayed.BurgurMenu;
-import main.menudisplayed.DrinkMenu;
-import main.menudisplayed.Menu;
-import main.menudisplayed.SidesMenu;
+import main.model.menu.Food;
+import main.model.menu.Order;
+import main.model.menudisplayed.BurgurMenu;
+import main.model.menudisplayed.DrinkMenu;
+import main.model.menudisplayed.Menu;
+import main.model.menudisplayed.SidesMenu;
 
 import java.io.IOException;
 import java.io.Serializable;

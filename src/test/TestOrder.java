@@ -1,8 +1,8 @@
-import main.menu.Food;
-import main.menu.Order;
-import main.menu.burger.beef.BigMac;
-import main.menu.drink.Coke;
-import main.menu.drink.Drink;
+import main.model.menu.Food;
+import main.model.menu.Order;
+import main.model.menu.burger.beef.BigMac;
+import main.model.menu.drink.Coke;
+import main.model.menu.drink.Drink;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

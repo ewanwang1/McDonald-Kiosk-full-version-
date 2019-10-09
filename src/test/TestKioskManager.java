@@ -1,7 +1,7 @@
-import main.menu.Order;
-import main.menu.burger.beef.BigMac;
-import main.menudisplayed.BurgurMenu;
-import main.menudisplayed.Menu;
+import main.model.menu.Order;
+import main.model.menu.burger.beef.BigMac;
+import main.model.menudisplayed.BurgurMenu;
+import main.model.menudisplayed.Menu;
 import main.ui.KioskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

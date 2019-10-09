@@ -1,9 +1,8 @@
-import main.exception.Loadable;
-import main.menu.Food;
-import main.menu.drink.Coke;
+import main.model.menu.Food;
+import main.model.menu.drink.Coke;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import main.menu.Order;
+import main.model.menu.Order;
 
 import java.io.IOException;
 import java.util.ArrayList;
