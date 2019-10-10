@@ -1,7 +1,6 @@
-package test;
 
-import main.model.menu.Food;
-import main.model.menu.burger.beef.BigMac;
+import main.menu.Food;
+import main.menu.burger.beef.BigMac;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

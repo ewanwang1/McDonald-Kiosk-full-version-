@@ -1,13 +1,12 @@
-package test;
 
-import main.model.menu.drink.Coke;
-import main.model.menu.drink.Drink;
-import main.model.menu.sides.Cookie;
-import main.model.menu.sides.Sides;
-import main.model.menudisplayed.BurgurMenu;
-import main.model.menudisplayed.DrinkMenu;
-import main.model.menudisplayed.Menu;
-import main.model.menudisplayed.SidesMenu;
+import main.menu.drink.Coke;
+import main.menu.drink.Drink;
+import main.menu.sides.Cookie;
+import main.menu.sides.Sides;
+import main.menudisplayed.BurgurMenu;
+import main.menudisplayed.DrinkMenu;
+import main.menudisplayed.Menu;
+import main.menudisplayed.SidesMenu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +35,6 @@ public class TestMenu {
     public void testAddFood() {
         testSidesMenu.getSize();
         assertEquals(testBurgerMenu.getSize(), 3);
-        testSidesMenu.printMenu();
     }
 
     @Test
@@ -50,6 +48,7 @@ public class TestMenu {
         testBurgerMenu.setup();
         testDrinkMenu.setup();
         testSidesMenu.setup();
+        testSidesMenu.getMenu();
 
     }
 
