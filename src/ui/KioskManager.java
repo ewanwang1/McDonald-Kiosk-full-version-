@@ -1,5 +1,6 @@
 package ui;
 
+import main.exception.TooMuchFoodException;
 import main.menu.Food;
 import main.menu.Order;
 import main.menudisplayed.BurgurMenu;
@@ -38,7 +39,13 @@ public class KioskManager implements Serializable {
             displayInitialChoice();
             int typeChoice = userInput.nextInt();
             System.out.println();
-            handleInitialChoice(typeChoice);
+            try {
+                handleInitialChoice(typeChoice);
+            } catch (UnkownCommandException e) {
+                System.out.println(e.getMessage());
+            } finally {
+                System.out.println("Eskeetit");
+            }
             currentOrder.save();
         }
 
@@ -58,12 +65,18 @@ public class KioskManager implements Serializable {
         Food userChoiceOfFood = currentMenuUsed.getFood(userChoiceOfFoodIndex);
         System.out.println("Awesome. Please enter the amount of " + userChoiceOfFood.getName() + " you would like");
         int userChoiceOfAmount = userInput.nextInt();
-        makeOrder(userChoiceOfAmount, userChoiceOfFood);
+        try {
+            makeOrder(userChoiceOfAmount, userChoiceOfFood);
+        } catch (TooMuchFoodException e) {
+            System.out.println(e.getMessage());
+        }
         System.out.println();
         System.out.println("Sweet, " + userChoiceOfAmount
                 + " " + userChoiceOfFood.getName()
                 + " has been added to the cart");
         System.out.println();
+
+
     }
 
 
@@ -86,13 +99,12 @@ public class KioskManager implements Serializable {
     private void printInitialChoice() {
         System.out.println("1. Order");
         System.out.println("2. View current order");
-        System.out.println("3. Clear Order");
-        System.out.println("4. Check out");
-        System.out.println("5. Quit");
+        System.out.println("3. Check out");
+        System.out.println("4. Quit");
     }
 
 
-    private void handleInitialChoice(int typeChoice) {
+    private void handleInitialChoice(int typeChoice) throws UnkownCommandException {
         switch (typeChoice) {
             case 1:
                 startOrder();
@@ -101,15 +113,13 @@ public class KioskManager implements Serializable {
                 viewOrder();
                 break;
             case 3:
-                currentOrder.clearOrder();
-                break;
-            case 4:
                 checkOut();
                 break;
-            case 5:
+            case 4:
                 quit();
                 break;
             default:
+                throw new UnkownCommandException("Sorry, I do not understand the command. Please try again");
         }
     }
 
@@ -126,7 +136,6 @@ public class KioskManager implements Serializable {
             case 3:
                 handleDrinkMenu();
                 break;
-
             default:
                 throw new IllegalStateException("Unexpected value: " + userChoiceOfType);
         }
@@ -191,8 +200,8 @@ public class KioskManager implements Serializable {
     }
 
     //EFFECT: Make the order for the customer
-    public void makeOrder(int userChoiceOfAmount, Food userChoicOfFood) {
-        currentOrder.order(userChoiceOfAmount, userChoicOfFood);
+    public void makeOrder(int userChoiceOfAmount, Food userChoiceOfFood) throws TooMuchFoodException {
+        currentOrder.order(userChoiceOfAmount, userChoiceOfFood);
     }
 
 

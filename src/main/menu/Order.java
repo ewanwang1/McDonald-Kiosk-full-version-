@@ -3,6 +3,7 @@ package main.menu;
 
 import main.exception.Loadable;
 import main.exception.Savable;
+import main.exception.TooMuchFoodException;
 
 import java.io.*;
 import java.util.Iterator;
@@ -19,9 +20,9 @@ public class Order implements Iterable<Food>, Serializable, Loadable, Savable {
 
 
     //EFFECT: add given food to curentOrder and update AmountOrdered
-    public void order(int amount, Food food) {
-        currentFoodOrdered.add(food);
+    public void order(int amount, Food food) throws TooMuchFoodException {
         food.addOrderAmount(amount);
+        currentFoodOrdered.add(food);
     }
 
 
@@ -52,14 +53,14 @@ public class Order implements Iterable<Food>, Serializable, Loadable, Savable {
     }
 
     public void save() throws IOException {
-        FileOutputStream fos = new FileOutputStream("C:\\data\\UBC\\2nd year\\Cpsc 210\\Personal project\\t.txt");
+        FileOutputStream fos = new FileOutputStream("t.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(currentFoodOrdered);
         oos.close();
     }
 
     public void load() throws IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream("C:\\data\\UBC\\2nd year\\Cpsc 210\\Personal project\\t.txt");
+        FileInputStream fis = new FileInputStream("t.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
         // food = (Food) ois.readObject();
         currentFoodOrdered = (LinkedList<Food>) ois.readObject();

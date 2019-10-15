@@ -1,4 +1,5 @@
 
+import main.exception.TooMuchFoodException;
 import main.menu.Food;
 import main.menu.burger.beef.BigMac;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,13 +17,13 @@ public class TestFood {
     }
 
     @Test
-    public void testAddOrderAmount() {
+    public void testAddOrderAmount() throws TooMuchFoodException {
         bigMac.addOrderAmount(3);
         assertEquals(bigMac.getAmountOrdered(), 3);
     }
 
     @Test
-    public void testGetAmountOrdered() {
+    public void testGetAmountOrdered() throws TooMuchFoodException {
         assertEquals(bigMac.getAmountOrdered(), 0);
         bigMac.addOrderAmount(3);
         assertEquals(bigMac.getAmountOrdered(), 3);
@@ -31,7 +32,7 @@ public class TestFood {
     }
 
     @Test
-    public void testSetPrice() {
+    public void testSetPrice() throws TooMuchFoodException {
         bigMac.addOrderAmount(3);
         bigMac.setPrice(21);
         assertEquals(bigMac.getPrice(), 21);

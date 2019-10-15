@@ -1,3 +1,4 @@
+import main.exception.TooMuchFoodException;
 import main.menu.Food;
 import main.menu.Order;
 import main.menu.burger.beef.BigMac;
@@ -28,7 +29,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testOrder() {
+    public void testOrder() throws TooMuchFoodException {
         testOrder.order(1, bigMac);
         testOrder.order(2, coke);
         assertEquals(testOrder.getSize(), 2);

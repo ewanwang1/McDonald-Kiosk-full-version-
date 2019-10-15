@@ -1,5 +1,7 @@
 package main.menu;
 
+import main.exception.TooMuchFoodException;
+
 import java.io.Serializable;
 
 public abstract class Food implements Serializable {
@@ -7,11 +9,18 @@ public abstract class Food implements Serializable {
     protected String name;
     protected int amountOrdered;
     protected String type;
+    protected int maxAmount = 100;
 
     //EFFECT: Add the amount of customer order
-    public void addOrderAmount(int order) {
+    public void addOrderAmount(int order) throws TooMuchFoodException {
+        if (order > 100) {
+            throw new TooMuchFoodException("Sorry, we currently do not have this much "
+                    + this.name + " in the inventory");
+        }
         amountOrdered += order;
     }
+
+
 
 
     //Getters and Setters

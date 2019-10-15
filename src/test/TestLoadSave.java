@@ -1,3 +1,4 @@
+import main.exception.TooMuchFoodException;
 import main.menu.Food;
 import main.menu.drink.Coke;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +17,7 @@ public class TestLoadSave {
     Order order;
 
     @BeforeEach
-    public void setUp() throws IOException {
+    public void setUp() throws IOException, TooMuchFoodException {
         order = new Order();
 
         coke = new Coke();
