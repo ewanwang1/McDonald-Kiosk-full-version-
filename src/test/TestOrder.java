@@ -28,6 +28,8 @@ public class TestOrder {
         currentFoodOrdered = new LinkedList<>();
         currentFoodOrdered.add(bigMac);
         currentFoodOrdered.add(coke);
+        testMenu.addFood(bigMac);
+        testMenu.addFood(coke);
     }
 
     @Test
@@ -41,7 +43,13 @@ public class TestOrder {
         testOrder.clearOrder(testMenu);
         assertTrue(testOrder.isOrderEmpty());
         testOrder.getCurrentFoodOrdered();
-
+        testOrder.clearOrder(testMenu);
+        assertTrue(testOrder.isOrderEmpty());
+        assertEquals(testOrder.getSize(),0);
+        testOrder.totalCostCalc();
+        testOrder.order(1, bigMac, testMenu);
+        testOrder.removeFood(bigMac);
+        testOrder.getCurrentFoodOrdered();
     }
 
 

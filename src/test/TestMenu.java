@@ -52,10 +52,6 @@ public class TestMenu {
 
     }
 
-    @Test
-    public void testPrint(){
-
-    }
 
 
 

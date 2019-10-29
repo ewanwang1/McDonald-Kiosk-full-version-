@@ -176,8 +176,14 @@ public class KioskManager implements Serializable {
         } else {
             System.out.println("You have currently ordered:");
             HashMap<Food, Integer> currentOrderItems = currentOrder.getCurrentFoodOrdered();
-            currentOrder.printCurrentOrderItems();
+            printCurrentOrderItems();
             System.out.println();
+        }
+    }
+
+    public void printCurrentOrderItems() {
+        for (HashMap.Entry<Food, Integer> entry : currentOrder.getCurrentFoodOrdered().entrySet()) {
+            System.out.println(entry.getValue() + " " + entry.getKey().getName());
         }
     }
 

@@ -74,11 +74,11 @@ public class Order implements Serializable {
 
 
     //EFFECT: print out all items that the customer have ordered so far
-    public void printCurrentOrderItems() {
-        for (HashMap.Entry<Food, Integer> entry : currentFoodOrdered2.entrySet()) {
-            System.out.println(entry.getValue() + " " + entry.getKey().getName());
-        }
-    }
+//    public void printCurrentOrderItems() {
+//        for (HashMap.Entry<Food, Integer> entry : currentFoodOrdered2.entrySet()) {
+//            System.out.println(entry.getValue() + " " + entry.getKey().getName());
+//        }
+//    }
 
 //    public void save() throws IOException {
 //        FileOutputStream fos = new FileOutputStream("t.txt");
