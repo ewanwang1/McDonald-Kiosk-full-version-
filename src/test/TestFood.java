@@ -5,11 +5,11 @@ import main.menu.burger.beef.BigMac;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestFood {
     Food bigMac;
+
 
     @BeforeEach
     public void setup() {
@@ -33,14 +33,20 @@ public class TestFood {
 
     @Test
     public void testSetPrice() throws TooMuchFoodException {
-        bigMac.addOrderAmount(3);
+        bigMac.addOrderAmount(21);
         bigMac.setPrice(21);
         assertEquals(bigMac.getPrice(), 21);
         assertEquals(bigMac.getName(), "BigMac");
+
     }
 
     @Test
     public void testAllFood() {
+        try {
+            bigMac.addOrderAmount(101);
+            fail("Exception should have been thrown");
+        } catch (TooMuchFoodException e) {
 
+        }
     }
 }

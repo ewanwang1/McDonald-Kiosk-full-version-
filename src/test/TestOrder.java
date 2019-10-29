@@ -4,6 +4,7 @@ import main.menu.Order;
 import main.menu.burger.beef.BigMac;
 import main.menu.drink.Coke;
 import main.menu.drink.Drink;
+import main.menudisplayed.BurgurMenu;
 import main.menudisplayed.Menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,11 +26,11 @@ public class TestOrder {
         testOrder = new Order();
         bigMac = new BigMac();
         coke = new Coke();
+        testMenu = new BurgurMenu();
         currentFoodOrdered = new LinkedList<>();
         currentFoodOrdered.add(bigMac);
         currentFoodOrdered.add(coke);
         testMenu.addFood(bigMac);
-        testMenu.addFood(coke);
     }
 
     @Test
@@ -37,16 +38,16 @@ public class TestOrder {
         testOrder.order(1, bigMac, testMenu );
         testOrder.order(2, coke, testMenu);
         assertEquals(testOrder.getSize(), 2);
-        assertEquals(testOrder.getCurrentFoodOrdered().get(bigMac), bigMac);
-        assertEquals(testOrder.getCurrentFoodOrdered().get(coke), 1);
-        assertEquals(testOrder.getCurrentFoodOrdered(), currentFoodOrdered);
+        assertEquals(testOrder.getCurrentFoodOrdered().get(bigMac), 1);
+        assertEquals(testOrder.getCurrentFoodOrdered().get(coke), 2);
+        testOrder.totalCostCalc();
         testOrder.clearOrder(testMenu);
         assertTrue(testOrder.isOrderEmpty());
         testOrder.getCurrentFoodOrdered();
         testOrder.clearOrder(testMenu);
         assertTrue(testOrder.isOrderEmpty());
         assertEquals(testOrder.getSize(),0);
-        testOrder.totalCostCalc();
+
         testOrder.order(1, bigMac, testMenu);
         testOrder.removeFood(bigMac);
         testOrder.getCurrentFoodOrdered();
