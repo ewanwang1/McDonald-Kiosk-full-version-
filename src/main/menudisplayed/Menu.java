@@ -1,7 +1,9 @@
 package main.menudisplayed;
 
 import main.menu.Food;
+import org.junit.jupiter.api.BeforeEach;
 
+import javax.swing.text.StyledEditorKit;
 import java.util.List;
 
 public abstract class Menu {
@@ -15,6 +17,15 @@ public abstract class Menu {
     //EFFECTS: add food to main.menu
     public void addFood(Food food) {
         menu.add(food);
+    }
+
+    //EFFECTS: Remove food from main.menu
+    public void removeFood(Food food) {
+        menu.remove(food);
+    }
+
+    public Boolean containFood(Food food) {
+        return menu.contains(food);
     }
 
 

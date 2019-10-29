@@ -10,6 +10,7 @@ import main.menudisplayed.SidesMenu;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -35,7 +36,7 @@ public class KioskManager implements Serializable {
     public void startKiosk() throws IOException, ClassNotFoundException {
         greet();
         while (!orderComplete) {
-            currentOrder.load();
+//            currentOrder.load();
             displayInitialChoice();
             int typeChoice = userInput.nextInt();
             System.out.println();
@@ -43,10 +44,8 @@ public class KioskManager implements Serializable {
                 handleInitialChoice(typeChoice);
             } catch (UnkownCommandException e) {
                 System.out.println(e.getMessage());
-            } finally {
-                System.out.println("Eskeetit");
             }
-            currentOrder.save();
+//            currentOrder.save();
         }
 
         System.out.println("Thank you for visiting McDonald. Have a great day!!");
@@ -66,16 +65,15 @@ public class KioskManager implements Serializable {
         System.out.println("Awesome. Please enter the amount of " + userChoiceOfFood.getName() + " you would like");
         int userChoiceOfAmount = userInput.nextInt();
         try {
-            makeOrder(userChoiceOfAmount, userChoiceOfFood);
+            makeOrder(userChoiceOfAmount, userChoiceOfFood, currentMenuUsed);
+            System.out.println();
+            System.out.println("Sweet, " + userChoiceOfAmount
+                    + " " + userChoiceOfFood.getName()
+                    + " has been added to the cart");
+            System.out.println();
         } catch (TooMuchFoodException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println();
-        System.out.println("Sweet, " + userChoiceOfAmount
-                + " " + userChoiceOfFood.getName()
-                + " has been added to the cart");
-        System.out.println();
-
 
     }
 
@@ -100,7 +98,7 @@ public class KioskManager implements Serializable {
         System.out.println("1. Order");
         System.out.println("2. View current order");
         System.out.println("3. Check out");
-        System.out.println("4. Quit");
+        System.out.println("4. Clear Order");
     }
 
 
@@ -116,7 +114,7 @@ public class KioskManager implements Serializable {
                 checkOut();
                 break;
             case 4:
-                quit();
+                currentOrder.clearOrder(currentMenuUsed);
                 break;
             default:
                 throw new UnkownCommandException("Sorry, I do not understand the command. Please try again");
@@ -177,31 +175,24 @@ public class KioskManager implements Serializable {
 
         } else {
             System.out.println("You have currently ordered:");
-            LinkedList<Food> currentOrderItems = currentOrder.getCurrentFoodOrdered();
-            printCurrentOrderItems(currentOrderItems);
+            HashMap<Food, Integer> currentOrderItems = currentOrder.getCurrentFoodOrdered();
+            currentOrder.printCurrentOrderItems();
             System.out.println();
         }
     }
 
     //Check out the items that the customer have ordered
     private void checkOut() {
-        System.out.println("The total for your order is $" + totalCostCalc());
-        currentOrder.clearOrder();
+        System.out.println("The total for your order is $" + currentOrder.totalCostCalc());
+        currentOrder.clearOrder(currentMenuUsed);
         orderComplete = true;
     }
 
-    //EFFECT: return the total cost of customer's order
-    private int totalCostCalc() {
-        int total = 0;
-        for (Food f : currentOrder) {
-            total += (f.getPrice() * f.getAmountOrdered());
-        }
-        return total;
-    }
 
     //EFFECT: Make the order for the customer
-    public void makeOrder(int userChoiceOfAmount, Food userChoiceOfFood) throws TooMuchFoodException {
-        currentOrder.order(userChoiceOfAmount, userChoiceOfFood);
+    public void makeOrder(int userChoiceOfAmount, Food userChoiceOfFood, Menu currentMenuUsed)
+            throws TooMuchFoodException {
+        currentOrder.order(userChoiceOfAmount, userChoiceOfFood, currentMenuUsed);
     }
 
 
@@ -223,12 +214,6 @@ public class KioskManager implements Serializable {
         }
     }
 
-    //EFFECT: print out all items that the customer have ordered so far
-    private void printCurrentOrderItems(LinkedList<Food> currentOrderItems) {
-        for (Food f : currentOrderItems) {
-            System.out.println(f.getAmountOrdered() + " " + f.getName());
-        }
-    }
 }
 
 

@@ -3,6 +3,7 @@ package main.menu;
 import main.exception.TooMuchFoodException;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class Food implements Serializable {
     protected int price;
@@ -19,8 +20,6 @@ public abstract class Food implements Serializable {
         }
         amountOrdered += order;
     }
-
-
 
 
     //Getters and Setters
@@ -43,5 +42,20 @@ public abstract class Food implements Serializable {
         return name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Food)) {
+            return false;
+        }
+        Food food = (Food) o;
+        return Objects.equals(name, food.name);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }
