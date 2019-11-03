@@ -11,13 +11,13 @@ import main.menudisplayed.SidesMenu;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class KioskManager implements Serializable {
 
+    private final PrinterForKiosk display = new PrinterForKiosk();
     private Scanner userInput;
     private Order currentOrder;
     private Menu currentMenuUsed;
@@ -34,10 +34,10 @@ public class KioskManager implements Serializable {
     }
 
     public void startKiosk() throws IOException, ClassNotFoundException {
-        greet();
+        display.greet();
         while (!orderComplete) {
 //            currentOrder.load();
-            displayInitialChoice();
+            display.displayInitialChoice();
             int typeChoice = userInput.nextInt();
             System.out.println();
             try {
@@ -53,10 +53,7 @@ public class KioskManager implements Serializable {
 
     }
 
-    private void greet() {
-        System.out.println("Welcome to Mcdonald. Please make your choice "
-                + "by pressing the number that corresponds to your choice");
-    }
+
 
     private void handleOrder() {
         int userChoiceOfFoodIndex = userInput.nextInt();
@@ -75,30 +72,6 @@ public class KioskManager implements Serializable {
             System.out.println(e.getMessage());
         }
 
-    }
-
-
-    private void displayInitialChoice() {
-        System.out.println("What would you like to do? ");
-        printInitialChoice();
-    }
-
-    //EFFECT: display main Menu
-    private void displayMainMenu() {
-        System.out.println("Our option today is: ");
-        System.out.println();
-        System.out.println("1. Burger");
-        System.out.println("2. Sides");
-        System.out.println("3. Drink");
-    }
-
-
-    //EFFECT: print out all types of food Mcdonald has
-    private void printInitialChoice() {
-        System.out.println("1. Order");
-        System.out.println("2. View current order");
-        System.out.println("3. Check out");
-        System.out.println("4. Clear Order");
     }
 
 
@@ -122,7 +95,7 @@ public class KioskManager implements Serializable {
     }
 
     private void startOrder() {
-        displayMainMenu();
+        display.displayMainMenu();
         int userChoiceOfType = userInput.nextInt();
         switch (userChoiceOfType) {
             case 1:
@@ -218,6 +191,28 @@ public class KioskManager implements Serializable {
         for (int i = 1; i < menuItems.size(); i++) {
             System.out.println(i + ": " + menuItems.get(i).getName());
         }
+    }
+
+
+
+    // Display things onto kiosk
+    private void greet() {
+        display.greet();
+    }
+
+    private void displayInitialChoice() {
+        display.displayInitialChoice();
+    }
+
+    //EFFECT: display main Menu
+    private void displayMainMenu() {
+        display.displayMainMenu();
+    }
+
+
+    //EFFECT: print out all types of food Mcdonald has
+    private void printInitialChoice() {
+        display.printInitialChoice();
     }
 
 }
