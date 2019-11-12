@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.beans.InvalidationListener;
 import main.exception.TooMuchFoodException;
 import main.menu.Food;
 import main.menu.Order;
@@ -7,15 +8,14 @@ import main.menudisplayed.BurgurMenu;
 import main.menudisplayed.DrinkMenu;
 import main.menudisplayed.Menu;
 import main.menudisplayed.SidesMenu;
+import main.statustracker.KioskStatus;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
-public class KioskManager implements Serializable {
+public class KioskManager extends Observable {
 
     private final PrinterForKiosk display = new PrinterForKiosk();
     private Scanner userInput;
@@ -25,12 +25,15 @@ public class KioskManager implements Serializable {
     private DrinkMenu drinkMenu;
     private SidesMenu sidesMenu;
     private Boolean orderComplete;
+    private KioskStatus kioskStatus;
 
 
     public KioskManager() {
         userInput = new Scanner(System.in);
         currentOrder = new Order();
         orderComplete = false;
+        kioskStatus = new KioskStatus();
+        addObserver(kioskStatus);
     }
 
     public void startKiosk() throws IOException, ClassNotFoundException {
@@ -47,12 +50,12 @@ public class KioskManager implements Serializable {
             }
 //            currentOrder.save();
         }
-
+        System.out.println("U have ordered " + kioskStatus.getItemsOrdered() + " item(s)");
+        System.out.println();
         System.out.println("Thank you for visiting McDonald. Have a great day!!");
         userInput.close();
 
     }
-
 
 
     private void handleOrder() {
@@ -94,8 +97,10 @@ public class KioskManager implements Serializable {
         }
     }
 
-    private void startOrder() {
+    public void startOrder() {
         display.displayMainMenu();
+        setChanged();
+        notifyObservers();
         int userChoiceOfType = userInput.nextInt();
         switch (userChoiceOfType) {
             case 1:
@@ -194,7 +199,6 @@ public class KioskManager implements Serializable {
     }
 
 
-
     // Display things onto kiosk
     private void greet() {
         display.greet();
@@ -214,6 +218,7 @@ public class KioskManager implements Serializable {
     private void printInitialChoice() {
         display.printInitialChoice();
     }
+
 
 }
 

@@ -1,30 +1,26 @@
 package main.menu;
 
 
-import main.exception.Loadable;
-import main.exception.Savable;
 import main.exception.TooMuchFoodException;
 import main.menudisplayed.Menu;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
 
 
 public class Order implements Serializable {
-    private HashMap<Food, Integer> currentFoodOrdered2;
+    private HashMap<Food, Integer> currentFoodOrdered;
     private Food food;
 
     public Order() {
-        currentFoodOrdered2 = new HashMap<>();
+        currentFoodOrdered = new HashMap<>();
     }
 
 
     //EFFECT: add given food to curentOrder and update AmountOrdered
     public void order(int amount, Food food, Menu menu) throws TooMuchFoodException {
         food.addOrderAmount(amount);
-        currentFoodOrdered2.put(food, amount);
+        currentFoodOrdered.put(food, amount);
         if (menu.containFood(food)) {
             menu.removeFood(food);
         }
@@ -32,27 +28,27 @@ public class Order implements Serializable {
     }
 
     public void removeFood(Food food) {
-        currentFoodOrdered2.remove(food);
+        currentFoodOrdered.remove(food);
     }
 
     //EFFECT: return amount of items that the customer have ordered so far
     public int getSize() {
-        return currentFoodOrdered2.size();
+        return currentFoodOrdered.size();
     }
 
     public HashMap<Food, Integer> getCurrentFoodOrdered() {
-        return currentFoodOrdered2;
+        return currentFoodOrdered;
     }
 
 
     public void clearOrder(Menu menu) {
 
-        for (Food food : currentFoodOrdered2.keySet()) {
+        for (Food food : currentFoodOrdered.keySet()) {
             if (!menu.containFood(food)) {
                 menu.addFood(food);
             }
         }
-        currentFoodOrdered2.clear();
+        currentFoodOrdered.clear();
 
         System.out.println("Order has been cleared");
 
@@ -60,13 +56,13 @@ public class Order implements Serializable {
 
 
     public boolean isOrderEmpty() {
-        return currentFoodOrdered2.isEmpty();
+        return currentFoodOrdered.isEmpty();
     }
 
 
     public int totalCostCalc() {
         int total = 0;
-        for (Food f : currentFoodOrdered2.keySet()) {
+        for (Food f : currentFoodOrdered.keySet()) {
             total += (f.getPrice() * f.getAmountOrdered());
         }
         return total;
