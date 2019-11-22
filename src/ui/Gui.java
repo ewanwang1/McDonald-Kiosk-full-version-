@@ -11,11 +11,14 @@ public class Gui extends JFrame implements ActionListener {
     private JTextField field;
 
     public Gui() {
-        super("The title");
+        //Setup
+        super("McDonald Kiosk");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(400, 90));
-        ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
+        ((JPanel) getContentPane()).setBorder(new EmptyBorder(12, 13, 13, 13));
         setLayout(new FlowLayout());
+
+        //Add Swing Components
         JButton btn = new JButton("Change");
         btn.setActionCommand("myButton");
         btn.addActionListener(this); //sets "this" class as an action listener for btn.
@@ -23,11 +26,16 @@ public class Gui extends JFrame implements ActionListener {
         //this.actionPerformed(ActionEvent e) will be called.
         //You could also set a different class, if you wanted
         //to capture the response behaviour elsewhere
+
         label = new JLabel("flag");
         field = new JTextField(5);
+
+        //Adding it components onto Swing
         add(field);
         add(btn);
         add(label);
+
+        //Opening the Jframe
         pack();
         setLocationRelativeTo(null);
         setVisible(true);

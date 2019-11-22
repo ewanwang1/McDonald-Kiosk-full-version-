@@ -1,7 +1,6 @@
 package ui;
 
-import exception.TooMuchFoodException;
-import exception.UnkownCommandException;
+import main.exception.TooMuchFoodException;
 import main.menu.Food;
 import main.menu.Order;
 import main.menudisplayed.BurgurMenu;

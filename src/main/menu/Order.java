@@ -1,7 +1,7 @@
 package main.menu;
 
 
-import exception.TooMuchFoodException;
+import main.exception.TooMuchFoodException;
 import main.menudisplayed.Menu;
 
 import java.io.*;

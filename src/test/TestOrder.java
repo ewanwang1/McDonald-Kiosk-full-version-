@@ -1,4 +1,4 @@
-import exception.TooMuchFoodException;
+import main.exception.TooMuchFoodException;
 import main.menu.Food;
 import main.menu.Order;
 import main.menu.burger.beef.BigMac;

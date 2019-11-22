@@ -1,4 +1,4 @@
-import exception.TooMuchFoodException;
+import main.exception.TooMuchFoodException;
 import main.menu.Food;
 import main.menu.drink.Coke;
 import org.junit.jupiter.api.BeforeEach;
