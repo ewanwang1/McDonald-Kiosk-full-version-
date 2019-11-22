@@ -1,6 +1,6 @@
 package main.menu;
 
-import main.exception.TooMuchFoodException;
+import exception.TooMuchFoodException;
 
 import java.io.Serializable;
 import java.util.Objects;

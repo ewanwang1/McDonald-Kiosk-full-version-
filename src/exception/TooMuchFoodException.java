@@ -1,4 +1,4 @@
-package main.exception;
+package exception;
 
 public class TooMuchFoodException extends Exception {
     public TooMuchFoodException(String msg) {

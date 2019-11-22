@@ -1,7 +1,7 @@
 package ui;
 
-import javafx.beans.InvalidationListener;
-import main.exception.TooMuchFoodException;
+import exception.TooMuchFoodException;
+import exception.UnkownCommandException;
 import main.menu.Food;
 import main.menu.Order;
 import main.menudisplayed.BurgurMenu;
@@ -11,13 +11,12 @@ import main.menudisplayed.SidesMenu;
 import main.statustracker.KioskStatus;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.*;
 
 
-public class KioskManager extends Observable {
+public class KioskManagerCommandPrompt extends Observable {
 
-    private final PrinterForKiosk display = new PrinterForKiosk();
+    private final PrinterForKioskCommandPrompt display = new PrinterForKioskCommandPrompt();
     private Scanner userInput;
     private Order currentOrder;
     private Menu currentMenuUsed;
@@ -28,7 +27,7 @@ public class KioskManager extends Observable {
     private KioskStatus kioskStatus;
 
 
-    public KioskManager() {
+    public KioskManagerCommandPrompt() {
         userInput = new Scanner(System.in);
         currentOrder = new Order();
         orderComplete = false;

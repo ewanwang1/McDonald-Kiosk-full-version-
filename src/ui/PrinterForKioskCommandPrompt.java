@@ -2,8 +2,8 @@ package ui;
 
 import java.io.Serializable;
 
-public class PrinterForKiosk implements Serializable {
-    public PrinterForKiosk() {
+public class PrinterForKioskCommandPrompt implements Serializable {
+    public PrinterForKioskCommandPrompt() {
     }
 
     void greet() {

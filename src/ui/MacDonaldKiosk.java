@@ -6,8 +6,16 @@ import java.io.Serializable;
 
 public class MacDonaldKiosk implements Serializable {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+          Gui gui = new Gui();
+    }
 
-        KioskManager kioskManager = new KioskManager();
+
+
+
+
+
+    private static void runCommandPrompt() throws IOException, ClassNotFoundException {
+        KioskManagerCommandPrompt kioskManager = new KioskManagerCommandPrompt();
         kioskManager.setUpMenu();
         kioskManager.startKiosk();
     }

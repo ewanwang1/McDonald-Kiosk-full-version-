@@ -1,11 +1,6 @@
-import main.exception.TooMuchFoodException;
 import main.menu.Food;
-import main.menu.drink.Coke;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import main.menu.Order;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
