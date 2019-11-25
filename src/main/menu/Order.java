@@ -6,11 +6,11 @@ import main.menudisplayed.Menu;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class Order implements Serializable {
     private HashMap<Food, Integer> currentFoodOrdered;
-    private Food food;
 
     public Order() {
         currentFoodOrdered = new HashMap<>();
@@ -18,12 +18,20 @@ public class Order implements Serializable {
 
 
     //EFFECT: add given food to curentOrder and update AmountOrdered
-    public void order(int amount, Food food, Menu menu) throws TooMuchFoodException {
+    public void order(int amount, Food food) throws TooMuchFoodException {
+
+        if (currentFoodOrdered.containsKey(food)) {
+            for (Food key : currentFoodOrdered.keySet()) {
+                key.addOrderAmount(amount);
+            }
+            return;
+        }
         food.addOrderAmount(amount);
         currentFoodOrdered.put(food, amount);
-        if (menu.containFood(food)) {
-            menu.removeFood(food);
-        }
+
+//        if (menu.containFood(food)) {
+//            menu.removeFood(food);
+//        }
 
     }
 
@@ -43,11 +51,11 @@ public class Order implements Serializable {
 
     public void clearOrder(Menu menu) {
 
-        for (Food food : currentFoodOrdered.keySet()) {
-            if (!menu.containFood(food)) {
-                menu.addFood(food);
-            }
-        }
+//        for (Food food : currentFoodOrdered.keySet()) {
+//            if (!menu.containFood(food)) {
+//                menu.addFood(food);
+//            }
+//        }
         currentFoodOrdered.clear();
 
         System.out.println("Order has been cleared");

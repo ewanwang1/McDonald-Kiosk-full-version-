@@ -35,8 +35,8 @@ public class TestOrder {
 
     @Test
     public void testOrder() throws TooMuchFoodException {
-        testOrder.order(1, bigMac, testMenu );
-        testOrder.order(2, coke, testMenu);
+        testOrder.order(1, bigMac);
+        testOrder.order(2, coke);
         assertEquals(testOrder.getSize(), 2);
         assertEquals(testOrder.getCurrentFoodOrdered().get(bigMac), 1);
         assertEquals(testOrder.getCurrentFoodOrdered().get(coke), 2);
@@ -48,7 +48,7 @@ public class TestOrder {
         assertTrue(testOrder.isOrderEmpty());
         assertEquals(testOrder.getSize(),0);
 
-        testOrder.order(1, bigMac, testMenu);
+        testOrder.order(1, bigMac);
         testOrder.removeFood(bigMac);
         testOrder.getCurrentFoodOrdered();
     }

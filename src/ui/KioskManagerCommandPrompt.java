@@ -174,7 +174,7 @@ public class KioskManagerCommandPrompt extends Observable {
     //EFFECT: Make the order for the customer
     public void makeOrder(int userChoiceOfAmount, Food userChoiceOfFood, Menu currentMenuUsed)
             throws TooMuchFoodException {
-        currentOrder.order(userChoiceOfAmount, userChoiceOfFood, currentMenuUsed);
+        currentOrder.order(userChoiceOfAmount, userChoiceOfFood);
     }
 
 

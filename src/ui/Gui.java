@@ -1,5 +1,7 @@
 package ui;
 
+import main.menu.Food;
+import main.menu.Order;
 import ui.panels.MainMenu;
 import ui.panels.OrderType;
 
@@ -15,6 +17,7 @@ public class Gui extends JFrame implements ActionListener {
     private JPanel jpanel1;
     private MainMenu mainMenu;
     private OrderType orderType;
+    public Order currentOrder;
 
     public Gui() {
         //Setup
@@ -32,11 +35,12 @@ public class Gui extends JFrame implements ActionListener {
         //this.actionPerformed(ActionEvent e) will be called.
         //You could also set a different class, if you wanted
         //to capture the response behaviour elsewhere
+        currentOrder = new Order();
 
         jpanel1 = new JPanel();
         label = new JLabel("flag");
         field = new JTextField(5);
-        mainMenu = new MainMenu(this);
+        mainMenu = new MainMenu(this, currentOrder);
 
         //Adding it components onto Swing
         jpanel1.add(field);
@@ -67,4 +71,5 @@ public class Gui extends JFrame implements ActionListener {
     public void makeInVisible() {
         jpanel1.setVisible(false);
     }
+
 }
