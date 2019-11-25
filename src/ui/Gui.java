@@ -1,5 +1,8 @@
 package ui;
 
+import ui.panels.MainMenu;
+import ui.panels.OrderType;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -9,13 +12,16 @@ import java.awt.event.ActionListener;
 public class Gui extends JFrame implements ActionListener {
     private JLabel label;
     private JTextField field;
+    private JPanel jpanel1;
+    private MainMenu mainMenu;
+    private OrderType orderType;
 
     public Gui() {
         //Setup
         super("McDonald Kiosk");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(400, 90));
-        ((JPanel) getContentPane()).setBorder(new EmptyBorder(12, 13, 13, 13));
+        setPreferredSize(new Dimension(400, 400));
+        ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         setLayout(new FlowLayout());
 
         //Add Swing Components
@@ -27,13 +33,17 @@ public class Gui extends JFrame implements ActionListener {
         //You could also set a different class, if you wanted
         //to capture the response behaviour elsewhere
 
+        jpanel1 = new JPanel();
         label = new JLabel("flag");
         field = new JTextField(5);
+        mainMenu = new MainMenu(this);
 
         //Adding it components onto Swing
-        add(field);
-        add(btn);
-        add(label);
+        jpanel1.add(field);
+        jpanel1.add(btn);
+        jpanel1.add(label);
+
+        add(mainMenu);
 
         //Opening the Jframe
         pack();
@@ -48,5 +58,13 @@ public class Gui extends JFrame implements ActionListener {
         if (e.getActionCommand().equals("myButton")) {
             label.setText(field.getText());
         }
+    }
+
+    public void makeVisible() {
+        jpanel1.setVisible(true);
+    }
+
+    public void makeInVisible() {
+        jpanel1.setVisible(false);
     }
 }
