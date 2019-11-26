@@ -16,10 +16,14 @@ public class CheckOut extends Panels {
         super(javaFrame, currentOrder);
         label = new JLabel("Check out");
         checkOutMsg = new JLabel("The total for your order is");
+        JLabel total  = new JLabel("$" + Integer.toString(currentOrder.totalCostCalc()));
+
 
         add(label);
         add(bigBlankSpace);
         add(checkOutMsg);
+        add(blankSpace);
+        add(total);
 
     }
 

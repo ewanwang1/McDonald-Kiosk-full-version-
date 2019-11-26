@@ -14,6 +14,7 @@ public abstract class Menu {
 
     }
 
+    //MODIFIES: this
     //EFFECTS: add food to main.menu
     public void addFood(Food food) {
         menu.add(food);
@@ -24,9 +25,11 @@ public abstract class Menu {
         menu.remove(food);
     }
 
+    //EFFECT: return true if menu contains the food
     public Boolean containFood(Food food) {
         return menu.contains(food);
     }
+
 
 
     //EFFECT: Return food on main.menu that correspond to consumed foodIndex

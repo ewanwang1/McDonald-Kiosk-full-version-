@@ -95,6 +95,7 @@ public class KioskManagerCommandPrompt extends Observable {
         }
     }
 
+
     public void startOrder() {
         display.displayMainMenu();
         setChanged();
@@ -157,20 +158,23 @@ public class KioskManagerCommandPrompt extends Observable {
         }
     }
 
+    //EFFECT: prints out order
     public void printCurrentOrderItems() {
         for (HashMap.Entry<Food, Integer> entry : currentOrder.getCurrentFoodOrdered().entrySet()) {
             System.out.println(entry.getValue() + " " + entry.getKey().getName());
         }
     }
 
-    //Check out the items that the customer have ordered
+    //REQUIRE: order not empty
+    //MODFIES: this, order
+    //EFFECT: Check out the items that the customer have ordered, and clear the order
     private void checkOut() {
         System.out.println("The total for your order is $" + currentOrder.totalCostCalc());
         currentOrder.clearOrder(currentMenuUsed);
         orderComplete = true;
     }
 
-
+    //MODIFIES: Order
     //EFFECT: Make the order for the customer
     public void makeOrder(int userChoiceOfAmount, Food userChoiceOfFood, Menu currentMenuUsed)
             throws TooMuchFoodException {
@@ -178,6 +182,7 @@ public class KioskManagerCommandPrompt extends Observable {
     }
 
 
+    //EFFECT: set up the menu so user can place order off of it
     public void setUpMenu() {
         burgurMenu = new BurgurMenu();
         sidesMenu = new SidesMenu();

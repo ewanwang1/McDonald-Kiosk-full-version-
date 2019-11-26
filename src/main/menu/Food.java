@@ -12,6 +12,7 @@ public abstract class Food implements Serializable {
     protected String type;
     protected int maxAmount = 100;
 
+    //MODIFIES: this
     //EFFECT: Add the amount of customer order
     public void addOrderAmount(int order) throws TooMuchFoodException {
         if (order > 100) {

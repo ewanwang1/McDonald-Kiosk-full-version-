@@ -11,12 +11,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Gui extends JFrame implements ActionListener {
+public class Gui extends JFrame  {
     private JLabel label;
     private JTextField field;
-    private JPanel jpanel1;
     private MainMenu mainMenu;
-    private OrderType orderType;
     public Order currentOrder;
 
     public Gui() {
@@ -28,24 +26,10 @@ public class Gui extends JFrame implements ActionListener {
         setLayout(new FlowLayout());
 
         //Add Swing Components
-        JButton btn = new JButton("Change");
-        btn.setActionCommand("myButton");
-        btn.addActionListener(this); //sets "this" class as an action listener for btn.
-        //that means that when the btn is clicked,
-        //this.actionPerformed(ActionEvent e) will be called.
-        //You could also set a different class, if you wanted
-        //to capture the response behaviour elsewhere
         currentOrder = new Order();
-
-        jpanel1 = new JPanel();
         label = new JLabel("flag");
         field = new JTextField(5);
         mainMenu = new MainMenu(this, currentOrder);
-
-        //Adding it components onto Swing
-        jpanel1.add(field);
-        jpanel1.add(btn);
-        jpanel1.add(label);
 
         add(mainMenu);
 
@@ -56,20 +40,5 @@ public class Gui extends JFrame implements ActionListener {
         setResizable(false);
     }
 
-    //this is the method that runs when Swing registers an action on an element
-    //for which this class is an ActionListener
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("myButton")) {
-            label.setText(field.getText());
-        }
-    }
-
-    public void makeVisible() {
-        jpanel1.setVisible(true);
-    }
-
-    public void makeInVisible() {
-        jpanel1.setVisible(false);
-    }
 
 }
